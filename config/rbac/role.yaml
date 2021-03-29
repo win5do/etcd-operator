@@ -1,0 +1,34 @@
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: etcd-operator-manager-role
+rules:
+- apiGroups:
+  - db.gogo.io
+  resources:
+  - etcds
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - db.gogo.io
+  resources:
+  - etcds/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - db.gogo.io
+  resources:
+  - etcds/status
+  verbs:
+  - get
+  - patch
+  - update

@@ -1,0 +1,62 @@
+- op: add
+  path: /rules/-
+  value:
+    apiGroups:
+      - admissionregistration.k8s.io
+    resources:
+      - validatingwebhookconfigurations
+      - mutatingwebhookconfigurations
+    verbs:
+      - list
+      - get
+- op: add
+  path: /rules/-
+  value:
+    apiGroups:
+      - admissionregistration.k8s.io
+    resources:
+      - validatingwebhookconfigurations
+      - mutatingwebhookconfigurations
+    resourceNames:
+      - etcd-operator-validating-webhook-config
+      - etcd-operator-mutating-webhook-config
+    verbs:
+      - create
+      - delete
+      - patch
+      - update
+      - watch
+- op: add
+  path: /rules/-
+  value:
+    apiGroups:
+      - ''
+    resources:
+      - secrets
+      - services
+      - pods
+      - persistentvolumeclaims
+    verbs:
+      - create
+      - delete
+      - deletecollection
+      - get
+      - list
+      - patch
+      - update
+      - watch
+- op: add
+  path: /rules/-
+  value:
+    apiGroups:
+      - apps
+    resources:
+      - '*'
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch

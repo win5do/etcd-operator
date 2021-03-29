@@ -1,0 +1,13 @@
+domain: gogo.io
+layout: go.kubebuilder.io/v3
+projectName: etcd-operator
+repo: github.com/win5do/etcd-operator
+resources:
+- crdVersion: v1
+  group: db
+  kind: Etcd
+  version: v1
+version: 3-alpha
+plugins:
+  manifests.sdk.operatorframework.io/v2: {}
+  scorecard.sdk.operatorframework.io/v2: {}

@@ -1,0 +1,14 @@
+resources:
+  - role.yaml
+  - role_binding.yaml
+  - leader_election_role.yaml
+  - leader_election_role_binding.yaml
+  - service-account.yaml
+
+patchesJson6902:
+  - target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: ClusterRole
+      name: etcd-operator-manager-role
+    path: webhook_permissions_patch.yaml

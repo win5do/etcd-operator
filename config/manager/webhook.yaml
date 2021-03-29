@@ -1,0 +1,55 @@
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  creationTimestamp: null
+  name: etcd-operator-mutating-webhook-config
+webhooks:
+  - admissionReviewVersions:
+      - v1
+    clientConfig:
+      service:
+        name: etcd-operator-webhook
+        namespace: etcd-operator-system
+        path: /mutate-db-gogo-io-v1-etcd
+    failurePolicy: Fail
+    name: etcd-operator.db.gogo.io
+    rules:
+      - apiGroups:
+          - db.gogo.io
+        apiVersions:
+          - v1
+        operations:
+          - CREATE
+          - UPDATE
+        resources:
+          - etcds
+    sideEffects: None
+
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  creationTimestamp: null
+  name: etcd-operator-validating-webhook-config
+webhooks:
+  - admissionReviewVersions:
+      - v1
+    clientConfig:
+      service:
+        name: etcd-operator-webhook
+        namespace: etcd-operator-system
+        path: /validate-db-gogo-io-v1-etcd
+    failurePolicy: Fail
+    name: etcd-operator.db.gogo.io
+    rules:
+      - apiGroups:
+          - db.gogo.io
+        apiVersions:
+          - v1
+        operations:
+          - CREATE
+          - UPDATE
+        resources:
+          - etcds
+    sideEffects: None

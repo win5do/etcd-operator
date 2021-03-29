@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: etcd-operator-webhook
+spec:
+  selector:
+    control-plane: controller-manager
+  ports:
+    - name: webhook
+      port: 443
+      targetPort: 9443

@@ -1,0 +1,7 @@
+apiVersion: db.gogo.io/v1
+kind: Etcd
+metadata:
+  name: etcd-sample
+spec:
+  members: 3
+  image: bitnami/etcd:3
